@@ -61,6 +61,7 @@ public class Scenario {
     public static final Scenario ACHIEVEMENT_HUNTER = new Scenario("achievement_hunter", UniversalMaterial.BOOK, AchievementHunter.class);
     public static final Scenario NINE_SLOTS = new Scenario("nine_slots", UniversalMaterial.BARRIER, NineSlotsListener.class);
     public static final Scenario NETHER_START = new Scenario("nether_start", UniversalMaterial.LAVA_BUCKET, NetherStartListener.class);
+    public static final Scenario MOLE = new Scenario("mole", UniversalMaterial.BARRIER, MoleListener.class);
 
     public static final Scenario[] BUILD_IN_SCENARIOS = new Scenario[]{
             CUTCLEAN,
@@ -109,7 +110,8 @@ public class Scenario {
             MONSTERS_INC,
             ACHIEVEMENT_HUNTER,
             NINE_SLOTS,
-            NETHER_START
+            NETHER_START,
+            MOLE
     };
 
     private final String key;

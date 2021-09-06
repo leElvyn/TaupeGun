@@ -297,5 +297,11 @@
     "description": [
       "You start the game in the nether."
     ]
+  },
+  "mole": {
+    "name": "The Mole",
+    "description": [
+      "TBF"
+    ]
   }
 }
