@@ -81,5 +81,9 @@ shadowJar {
     configurations = [project.configurations.compile]
     relocate 'io.papermc.lib', 'com.gmail.val59000mc.paperlib'
 }
+compileJava.options.encoding = 'UTF-8'
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 build.dependsOn(shadowJar)

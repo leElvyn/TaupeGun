@@ -58,6 +58,8 @@ public class GameManager{
 
     private GameState gameState;
 	private boolean pvp;
+	private boolean friendlyFire;
+	private boolean isMolesScenarioEnabled = false;
 	private boolean gameIsEnding;
 	private int episodeNumber;
 	private long remainingTime;
@@ -159,11 +161,21 @@ public class GameManager{
 		return pvp;
 	}
 
+	public boolean getFriendlyFire() { return friendlyFire; }
+
+	public boolean getMolesScenarioEnabled() { return isMolesScenarioEnabled; }
+
 	public void setPvp(boolean state) {
 		pvp = state;
 	}
 
-    public void setGameState(GameState gameState){
+	public void setFriendlyFire(boolean state) {
+		friendlyFire = state;
+	}
+
+	public void setMolesScenarioEnabled(boolean state) { isMolesScenarioEnabled = state; }
+
+	public void setGameState(GameState gameState){
         Validate.notNull(gameState);
 
         if (this.gameState == gameState){
@@ -301,6 +313,10 @@ public class GameManager{
             Bukkit.getScheduler().scheduleSyncDelayedTask(UhcCore.getPlugin(), new FinalHealThread(this, playerManager), config.get(MainConfig.FINAL_HEAL_DELAY)*20);
         }
 
+		if (isMolesScenarioEnabled) {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(UhcCore.getPlugin(), new MolesThread(this, playerManager), 20*20);
+		}
+
 		Bukkit.getPluginManager().callEvent(new UhcStartedEvent());
 		statsHandler.addGameToStatistics();
 	}
@@ -394,6 +410,7 @@ public class GameManager{
 		registerCommand("upload", new UploadCommandExecutor());
 		registerCommand("deathmatch", new DeathmatchCommandExecutor(this, deathmatchHandler));
 		registerCommand("team", new TeamCommandExecutor(this));
+		registerCommand("t", new MolesChatCommandExecutor(this));
 	}
 
 	private void registerCommand(String commandName, CommandExecutor executor){

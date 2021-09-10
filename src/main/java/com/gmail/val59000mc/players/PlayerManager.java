@@ -445,6 +445,16 @@ public class PlayerManager {
 		return teams;
 	}
 
+	public List<UhcPlayer> getMoles() {
+		List<UhcPlayer> moles = new ArrayList<>();
+		for (UhcPlayer player : getPlayersList()) {
+			if (player.getMoleState()) {
+				moles.add(player);
+			}
+		}
+		return moles;
+	}
+
 	public void randomTeleportTeams() {
 		GameManager gm = GameManager.getGameManager();
 		World world = gm.getMapLoader().getUhcWorld(World.Environment.NORMAL);
@@ -530,7 +540,6 @@ public class PlayerManager {
 			Player p = player.getPlayer();
 			p.playSound(p.getLocation(), sound.getSound(), v, v1);
 		} catch (UhcPlayerNotOnlineException e) {
-			// No sound played
 		}
 	}
 

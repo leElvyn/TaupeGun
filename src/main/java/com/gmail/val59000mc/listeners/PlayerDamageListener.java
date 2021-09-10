@@ -22,7 +22,7 @@ public class PlayerDamageListener implements Listener{
 
 	public PlayerDamageListener(GameManager gameManager){
 		this.gameManager = gameManager;
-		friendlyFire = gameManager.getConfig().get(MainConfig.ENABLE_FRIENDLY_FIRE);
+		friendlyFire = gameManager.getFriendlyFire();
 	}
 	
 	@EventHandler(priority=EventPriority.NORMAL)
@@ -78,7 +78,7 @@ public class PlayerDamageListener implements Listener{
 			UhcPlayer uhcDamager = pm.getUhcPlayer(damager);
 			UhcPlayer uhcDamaged = pm.getUhcPlayer(damaged);
 
-			if(!friendlyFire && uhcDamager.getState().equals(PlayerState.PLAYING) && uhcDamager.isInTeamWith(uhcDamaged)){
+			if(!gameManager.getFriendlyFire() && uhcDamager.getState().equals(PlayerState.PLAYING) && uhcDamager.isInTeamWith(uhcDamaged)){
 				damager.sendMessage(Lang.PLAYERS_FF_OFF);
 				event.setCancelled(true);
 			}
@@ -107,7 +107,7 @@ public class PlayerDamageListener implements Listener{
 				UhcPlayer uhcDamager = pm.getUhcPlayer((Player) projectile.getShooter());
 				UhcPlayer uhcDamaged = pm.getUhcPlayer(shot);
 
-				if(!friendlyFire && uhcDamager.getState().equals(PlayerState.PLAYING) && uhcDamager.isInTeamWith(uhcDamaged)){
+				if(!gameManager.getFriendlyFire() && uhcDamager.getState().equals(PlayerState.PLAYING) && uhcDamager.isInTeamWith(uhcDamaged)){
 					uhcDamager.sendMessage(Lang.PLAYERS_FF_OFF);
 					event.setCancelled(true);
 				}

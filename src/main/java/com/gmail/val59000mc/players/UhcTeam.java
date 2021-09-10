@@ -54,6 +54,9 @@ public class UhcTeam {
 	public String getPrefix() {
 		return prefix + "\u25A0 ";
 	}
+	public String getPrefixAlone() {
+		return prefix;
+	}
 
 	public String getColor(){
 		return prefix;

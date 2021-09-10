@@ -34,6 +34,7 @@ public class UhcPlayer {
 	private final Set<UhcTeam> teamInvites;
 	private final Set<Scenario> scenarioVotes;
 	private final Set<ItemStack> storedItems;
+	private boolean isMole;
 
 	private String nickName;
 	private Scoreboard scoreboard;
@@ -136,9 +137,13 @@ public class UhcPlayer {
 		return team;
 	}
 
+	public boolean getMoleState() { return isMole; }
+
 	public synchronized void setTeam(UhcTeam team) {
 		this.team = team;
 	}
+
+	public void setMoleState(boolean state) { isMole = state; }
 
 	public PlayerState getState() {
 		return state;
