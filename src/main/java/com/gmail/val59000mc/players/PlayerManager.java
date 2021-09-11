@@ -548,6 +548,8 @@ public class PlayerManager {
 		int playingPlayersOnline = 0;
 		int playingTeams = 0;
 		int playingTeamsOnline = 0;
+		int playingMoles = 0;
+		int aloneMoles = 0; // number of moles that are the last ones in their teams
 
 		for(UhcTeam team : listUhcTeams()){
 
@@ -564,6 +566,12 @@ public class PlayerManager {
 						teamIsOnline = 1;
 					}catch(UhcPlayerNotOnlineException e){
 						// Player isn't online
+					}
+					if (player.getMoleState()) {
+						playingMoles ++;
+						if (team.getPlayingMemberCount() == 0) {
+							aloneMoles ++;
+						}
 					}
 				}
 			}
@@ -591,8 +599,13 @@ public class PlayerManager {
 				gm.startEndGameThread();
 			}
 		}
-		else if(playingPlayers>0 && playingPlayersOnline > 0 && playingTeamsOnline == 1 && playingTeams == 1 && !cfg.get(MainConfig.ONE_PLAYER_MODE)){
-			// Check if one playing team remains
+
+		else if(playingPlayers>0 && playingPlayersOnline > 0 && playingTeamsOnline == 1 && playingTeams == 1 && !cfg.get(MainConfig.ONE_PLAYER_MODE) && playingMoles == 0){
+			// Check if one playing team remains, and there are no moles left
+			gm.endGame();
+		}
+		else if(playingPlayers>0 && playingPlayersOnline > 0 && playingMoles == playingPlayers) {
+			// Check if only moles remain
 			gm.endGame();
 		}
 		else if(playingPlayers>0 && playingPlayersOnline > 0 && playingTeamsOnline == 1 && playingTeams > 1){

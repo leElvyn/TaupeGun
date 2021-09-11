@@ -10,10 +10,12 @@ import com.gmail.val59000mc.players.PlayerManager;
 import com.gmail.val59000mc.players.UhcPlayer;
 import com.gmail.val59000mc.scenarios.ScenarioListener;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 
 
 public class MolesListener extends ScenarioListener {
@@ -29,5 +31,7 @@ public class MolesListener extends ScenarioListener {
         getGameManager().setMolesScenarioEnabled(false);
         System.out.println(getGameManager().getFriendlyFire());
     }
+
+
 }
 

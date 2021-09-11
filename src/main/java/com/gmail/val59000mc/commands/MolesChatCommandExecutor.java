@@ -50,7 +50,7 @@ public class MolesChatCommandExecutor implements CommandExecutor {
         UhcTeam moleTeam = uhcPlayer.getTeam();
         String moleTeamPrefix = moleTeam.getPrefixAlone();
 
-        String formattedMessage = ChatColor.RED + "[taupes] " + moleTeamPrefix + "<" + ChatColor.MAGIC + "xxxxxx" + "> "  + ChatColor.RESET + message;
+        String formattedMessage = ChatColor.RED + "[taupes] " + moleTeamPrefix + "<" + ChatColor.MAGIC + "xxxxxx"  + ChatColor.RESET + moleTeamPrefix + "> " + ChatColor.RESET + message;
 
         PlayerManager playerManager = gameManager.getPlayerManager();
         for (UhcPlayer moleUhcPlayer : playerManager.getMoles()) {
