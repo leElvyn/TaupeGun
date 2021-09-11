@@ -32,6 +32,10 @@ public class MolesListener extends ScenarioListener {
         System.out.println(getGameManager().getFriendlyFire());
     }
 
-
+    @EventHandler (priority = EventPriority.LOW)
+    public void onPlayerDeath(PlayerDeathEvent e){
+        String playerName = e.getEntity().getName();
+        e.setDeathMessage(ChatColor.GREEN + playerName+ ChatColor.RESET + " est mort.");
+    }
 }
 
