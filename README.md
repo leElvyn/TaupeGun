@@ -7,7 +7,7 @@ This repo is a fork of UhcCore to implement the taupe gun scenario. This repo cu
 ## original readme
 
 # UhcCore
-Automates UHC games on a dedicated 1.8 - 1.17 server.
+Automates UHC games on a dedicated 1.8 - 1.18 server.
 
 More info can be found on the [wiki](https://github.com/Mezy/UhcCore/wiki)
 
